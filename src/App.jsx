@@ -1,16 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Outlet } from 'react-router-dom'
+import Header from './components/Header'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <>
-      <div className='text-7xl bg-black text-center text-white p-10'>Assignment 3</div>
+      <Header />
+      <Outlet />
     </>
   )
 }
-
-export default App
