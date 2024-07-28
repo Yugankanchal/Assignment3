@@ -1,15 +1,20 @@
 import PropTypes from 'prop-types';
-function Comments({ comments, }) {
-
+function Comments({ comments, isVisible, setIsVisible }) {
+    const hideComments = () => {
+        setIsVisible(false);
+    }
     return (
-        <section id='comment-section'>
-            <h2>comments</h2>
-            {comments.map((comment) => (
-                <div key={comment.id}>
-                    <p>{comment.body}</p>
-                </div>
-            ))}
-        </section>
+        <>
+            {isVisible && <section id='comment-section'>
+                <h2>comments</h2>
+                {comments.map((comment) => (
+                    <div key={comment.id}>
+                        <p>{comment.body}</p>
+                    </div>
+                ))}
+                <button onClick={hideComments}>Hide Comments</button>
+            </section>}
+        </>
     );
 }
 Comments.propTypes = {

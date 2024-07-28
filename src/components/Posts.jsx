@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+// import './App.css'; // Make sure to import the CSS file
 
 function Posts() {
     const [posts, setPosts] = useState(null);
@@ -15,7 +16,7 @@ function Posts() {
         const postId = e.target.getAttribute('data-post-id');
         const userId = e.target.getAttribute('data-user-id');
         console.log(userId, postId);
-        navigate(`/${postId}`);
+        navigate(`/posts/${postId}`);
     }
 
     const fetchData = async () => {
@@ -44,7 +45,7 @@ function Posts() {
     } else {
         content = (
             posts.map((post) => (
-                <div key={post.id} className="bg-black text-white p-8 m-10">
+                <div key={post.id} className="bg-black text-white p-8 m-10 w-[30vw] border-2 border-[#fecc70] movingBorders">
                     <h3>{post.title}</h3>
                     <p>{post.body.substr(0, 60)}</p>
                     <button
@@ -61,7 +62,7 @@ function Posts() {
     }
 
     return (
-        <div>{content}</div>
+        <div className="mx-auto w-[80vw] flex sm:flex-col md:flex-row flex-wrap justify-between min-h-[100vh] border-2 border-white movingBorders">{content}</div>
     );
 }
 

@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.movingBorders {
+    border: 4px solid;
+    border-image-slice: 1;
+    border-image-source: conic-gradient(rgb(111, 100, 173) 72deg, transparent 120deg);
+    animation: rotate 3s 5ms ease-in-out infinite both;
+    border-image-slice: 30;
+    border-radius: 2rem;
+}
+
+@keyframes rotate {
+    0% {
+        border-image-source: conic-gradient(rgb(111, 100, 173) 72deg, transparent 120deg);
+    }
+
+    25% {
+        border-image-source: conic-gradient(transparent 72deg, rgb(172, 245, 179) 144deg, transparent 216deg)
+    }
+
+    50% {
+        border-image-source: conic-gradient(transparent 144deg, #257ead 216deg, transparent 318deg)
+    }
+
+    75% {
+        border-image-source: conic-gradient(transparent 216deg, rgb(81, 195, 226) 318deg, transparent 390deg);
+    }
+
+    100% {
+        border-image-source: conic-gradient(rgb(111, 100, 173) 72deg, transparent 120deg);
+    }
+}

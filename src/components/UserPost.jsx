@@ -9,6 +9,7 @@ function UserPost() {
     const [error, setError] = useState(false);
     const [comments, setComments] = useState(null);
     const [isVisible, setIsVisible] = useState(false);
+    const [user, setUser] = useState(null)
     const sleep = (ms) => {
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
@@ -16,11 +17,17 @@ function UserPost() {
         const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
         const data = await response.json();
         setComments(data);
+        setIsVisible(true)
     }
     const fetchData = async () => {
         try {
             const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
             const data = await response.json();
+            const userResponse = await fetch(`https://jsonplaceholder.typicode.com/users/${data.userId}`);
+            const userData = await userResponse.json();
+            if (userData) {
+                setUser(userData);
+            }
             await sleep(1000);
             setPost(data);
             setLoading(false);
@@ -34,12 +41,6 @@ function UserPost() {
         fetchData();
     }, [postId])
 
-
-    // useEffect(() => {
-    //     handleComments();
-    // }, [comments])
-
-
     let content;
     if (loading) {
         content = <>Loading</>
@@ -49,14 +50,15 @@ function UserPost() {
         content = <>
             <h2>{post.title}</h2>
             <p>{post.body}</p>
+            <p>posted By: {user.name}</p>
             <button onClick={handleComments}>Show Comments</button>
             {
-                comments && <Comments comments={comments} />
+                comments && isVisible && <Comments comments={comments} isVisible={isVisible} setIsVisible={setIsVisible} />
             }
         </>
     }
     return (
-        <div>{content}</div>
+        <div className="text-white">{content}</div>
     )
 }
 
