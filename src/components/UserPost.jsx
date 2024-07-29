@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import Comments from "./Comments";
+import PostComments from './PostComments'
 import { motion } from "framer-motion";
 
 
@@ -82,7 +82,7 @@ function UserPost() {
             <p className="text-2xl p-5">posted By: {user.name}</p>
             <button onClick={handleComments} className="text-xl p-5 border-2 border-white rounded-lg m-5" >Show Comments</button>
             {
-                comments && isVisible && <Comments comments={comments} isVisible={isVisible} setIsVisible={setIsVisible} />
+                comments && isVisible && <PostComments comments={comments} isVisible={isVisible} setIsVisible={setIsVisible} />
             }
         </motion.div>
     }

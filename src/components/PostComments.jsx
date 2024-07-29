@@ -1,7 +1,7 @@
 import { animate, motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
-function Comments({ comments, isVisible, setIsVisible }) {
+function PostComments({ comments, isVisible, setIsVisible }) {
     const hideComments = () => {
         setIsVisible(false);
     }
@@ -29,16 +29,16 @@ function Comments({ comments, isVisible, setIsVisible }) {
         </>
     );
 }
-Comments.propTypes = {
-    comments: PropTypes.arrayOf(
-        PropTypes.shape({
-            postId: PropTypes.number,
-            id: PropTypes.number,
-            body: PropTypes.string,
-            name: PropTypes.string,
-            email: PropTypes.string,
-        })
-    ).isRequired
-};
+// Comments.propTypes = {
+//     comments: PropTypes.arrayOf(
+//         PropTypes.shape({
+//             postId: PropTypes.number,
+//             id: PropTypes.number,
+//             body: PropTypes.string,
+//             name: PropTypes.string,
+//             email: PropTypes.string,
+//         })
+//     ).isRequired
+// };
 
-export default Comments;
+export default PostComments;
