@@ -1,0 +1,15 @@
+.pageTransition {
+    opacity: 0;
+    transform: translateY(100px);
+    filter: blur(20px);
+    transition-duration: .5s;
+    background-color: black;
+}
+
+.pageUptransition {
+    opacity: .5;
+    transform: translateY(0);
+    filter: blur(20px);
+    background-color: black;
+    transition-duration: .5s;
+}

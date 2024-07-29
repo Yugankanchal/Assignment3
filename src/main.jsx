@@ -6,6 +6,7 @@ import store from './store/store.js'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Posts from './components/Posts.jsx'
 import UserPost from './components/UserPost.jsx'
+import Login from './components/Login.jsx'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: 'posts/:postId',
         element: <UserPost />
+      },
+      {
+        path: '/login',
+        element: <Login />
       }
     ]
   }

@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import Comments from "./Comments";
+import { motion } from "framer-motion";
+
+
 
 function UserPost() {
     const { postId } = useParams()
@@ -38,8 +41,31 @@ function UserPost() {
         }
     }
     useEffect(() => {
-        fetchData();
-    }, [postId])
+        async function handleTransition() {
+            const body = document.querySelector('body');
+            body.classList.add('pageTransition');
+
+            try {
+                // Await the fetchData function if it's asynchronous
+
+                await fetchData();
+                // Wait for 1 second
+                await sleep(500);
+            } catch (error) {
+                console.error('Error during transition:', error);
+            } finally {
+                body.classList.remove('pageTransition');
+                body.classList.add('pageUptransition');
+                await sleep(500);
+
+                body.classList.remove('pageUptransition');
+            }
+
+            console.log(body);
+        }
+
+        handleTransition();
+    }, [postId]);
 
     let content;
     if (loading) {
@@ -47,18 +73,23 @@ function UserPost() {
     } else if (error) {
         content = <>error</>
     } else {
-        content = <>
-            <h2>{post.title}</h2>
-            <p>{post.body}</p>
-            <p>posted By: {user.name}</p>
-            <button onClick={handleComments}>Show Comments</button>
+        content = <motion.div initial={{ y: -100 }}
+            whileInView={{ y: 0 }}>
+            <img src="https://th.bing.com/th/id/OIP.55ULTLoXRwDVDcEZZoORMwHaHa?w=200&h=201&c=7&r=0&o=5&pid=1.7"
+                className="rounded-[50%] w-[150px] m-10 h-[150px] border-2  border-purple-400" alt="" />
+            <h2 className="text-3xl p-5">{post.title}</h2>
+            <p className="text-2xl p-5">{post.body}</p>
+            <p className="text-2xl p-5">posted By: {user.name}</p>
+            <button onClick={handleComments} className="text-xl p-5 border-2 border-white rounded-lg m-5" >Show Comments</button>
             {
                 comments && isVisible && <Comments comments={comments} isVisible={isVisible} setIsVisible={setIsVisible} />
             }
-        </>
+        </motion.div>
     }
     return (
-        <div className="text-white">{content}</div>
+        <div
+
+            className="text-white w-[80vw] mx-auto movingBorders bg-[#0a1222]">{content}</div>
     )
 }
 
