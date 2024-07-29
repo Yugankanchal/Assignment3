@@ -9,7 +9,7 @@ function PostComments({ comments, isVisible, setIsVisible }) {
         <>
             {isVisible && <motion.section
                 initial={{ x: -100 }}
-                whileInView={{ x: 0, }}
+                whileInView={{ x: 0 }}
                 id='comment-section'
                 className='border-t-2 border-white rounded-lg bg-[#040916] border-b-2 my-10'
             >

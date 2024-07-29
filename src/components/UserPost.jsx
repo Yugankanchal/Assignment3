@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import PostComments from './PostComments'
 import { motion } from "framer-motion";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 
 
 function UserPost() {
+    const navigae = useNavigate();
     const { postId } = useParams()
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -20,6 +23,15 @@ function UserPost() {
         const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
         const data = await response.json();
         setComments(data);
+
+        console.log('scrolled');
+        // await sleep(500);
+        requestAnimationFrame(() => {
+            window.scrollBy({
+                top: '40px', // Scroll down by 40 pixels
+                behavior: 'smooth' // Smooth scroll animation
+            });
+        })
         setIsVisible(true)
     }
     const fetchData = async () => {
@@ -73,8 +85,12 @@ function UserPost() {
     } else if (error) {
         content = <>error</>
     } else {
-        content = <motion.div initial={{ y: -100 }}
+        content = <motion.div className="flex flex-wrap"
+            initial={{ y: -100 }}
             whileInView={{ y: 0 }}>
+            <FontAwesomeIcon icon={faArrowLeft} className="text-2xl p-3 hover:border-2 m-2 mt-4 hover:rounded-[50%] cursor-pointer duration-500" onClick={() => {
+                navigae('/posts')
+            }} />
             <img src="https://th.bing.com/th/id/OIP.55ULTLoXRwDVDcEZZoORMwHaHa?w=200&h=201&c=7&r=0&o=5&pid=1.7"
                 className="rounded-[50%] w-[150px] m-10 h-[150px] border-2  border-purple-400" alt="" />
             <h2 className="text-3xl p-5">{post.title}</h2>
@@ -87,9 +103,8 @@ function UserPost() {
         </motion.div>
     }
     return (
-        <div
-
-            className="text-white w-[90vw] md:w-[80vw] mx-auto movingBorders bg-[#0a1222]">{content}</div>
+        <div className="text-white w-[90vw] md:w-[80vw] mx-auto movingBorders bg-[#0a1222]">{content}
+        </div>
     )
 }
 
