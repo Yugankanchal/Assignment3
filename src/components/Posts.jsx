@@ -80,7 +80,7 @@ function Posts() {
                         mass: 1
                     }}
                     key={post.id}
-                    className="bg-black text-white p-8 m-10 w-[30vw] border-2 border-white movingBorders rounded-[2rem]">
+                    className="bg-black text-white p-8 m-10 w-[70vw] xl:w-[30vw] md:w-[70vw] border-2 border-white movingBorders rounded-[2rem]">
                     <img src="https://th.bing.com/th/id/OIP.55ULTLoXRwDVDcEZZoORMwHaHa?w=200&h=201&c=7&r=0&o=5&pid=1.7" className="rounded-[50%] w-[100px] h-[100px] border-2 border-purple-400" alt="" />
                     <h3 className="text-3xl p-2">{post.title}</h3>
                     <p className="texxt-2xl p-2">{post.body.substr(0, 60)}</p>
@@ -108,7 +108,7 @@ function Posts() {
     }
 
     return (
-        <div className="mx-auto w-[80vw] flex sm:flex-col md:flex-row flex-wrap justify-between min-h-[100vh] border-2 border-white movingBorders">{content}</div>
+        <div className="mx-auto md:w-[80vw] w-[90vw] flex flex-col xl:flex-row flex-wrap justify-between min-h-[100vh] border-2 border-white movingBorders">{content}</div>
     );
 }
 

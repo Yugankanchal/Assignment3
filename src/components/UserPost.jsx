@@ -89,7 +89,7 @@ function UserPost() {
     return (
         <div
 
-            className="text-white w-[80vw] mx-auto movingBorders bg-[#0a1222]">{content}</div>
+            className="text-white w-[90vw] md:w-[80vw] mx-auto movingBorders bg-[#0a1222]">{content}</div>
     )
 }
 

@@ -19,8 +19,8 @@ function Header() {
         body.style.backgroundImage = "linear-gradient(162deg, rgb(221, 51, 92) 0%, rgb(2, 6, 23) 29%, white)"
     }, [])
     return (
-        <header className="text-7xl mx-auto text-white mb-10 rounded-xl">
-            <div className="w-[80vw] mx-auto p-4 flex justify-between">
+        <header className="text-5xl md:text-7xl mx-auto text-white mb-10 rounded-xl">
+            <div className="md:w-[80vw] w-[100vw] mx-auto p-4 flex justify-between">
                 <h1 className="">BlogPost</h1>
                 <button
                     type="submit"
