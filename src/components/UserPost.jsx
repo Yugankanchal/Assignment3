@@ -95,11 +95,13 @@ function UserPost() {
                 className="rounded-[50%] w-[150px] m-10 h-[150px] border-2  border-purple-400" alt="" />
             <h2 className="text-3xl p-5">{post.title}</h2>
             <p className="text-2xl p-5">{post.body}</p>
-            <p className="text-2xl p-5">posted By: {user.name}</p>
-            <button onClick={handleComments} className="text-xl p-5 border-2 border-white rounded-lg m-5" >Show Comments</button>
-            {
-                comments && isVisible && <PostComments comments={comments} isVisible={isVisible} setIsVisible={setIsVisible} />
-            }
+            <div>
+                <p className="text-2xl p-5">posted By: {user.name}</p>
+                <button onClick={handleComments} className="text-xl p-5 border-2 border-white rounded-lg m-5" >Show Comments</button>
+                {
+                    comments && isVisible && <PostComments comments={comments} isVisible={isVisible} setIsVisible={setIsVisible} />
+                }
+            </div>
         </motion.div>
     }
     return (
