@@ -24,7 +24,7 @@ function Header() {
                 <h1 className="">BlogPost</h1>
                 <button
                     type="submit"
-                    className={`text-2xl ${userData === null ? 'scale-0' : 'scale-100'}  text-blue-950 border-2 border-blue-900 rounded-xl p-3 hover:scale-80 hover:text-[1.3rem] duration-1000`}
+                    className={`text-2xl ${userData === null ? 'scale-0' : 'scale-100'}  text-blue-950 border-2 border-blue-900 rounded-xl p-1 hover:scale-80 hover:text-[1.3rem] duration-1000`}
                     onClick={async () => {
                         const body = document.querySelector('body');
                         body.classList.add('pageTransition');
