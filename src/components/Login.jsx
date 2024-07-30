@@ -25,7 +25,7 @@ function Login() {
     }
     const isEnabled = user && password;
     return (
-        <div className='w-[90vw] md:w-[60vw] mx-auto flex flex-col  md:text-3xl sm:text-xl bg-[#0a1222] justify-center h-[70vh] movingBorders '>
+        <div className='w-[90vw] md:w-[60vw] md:ml-[11rem] flex flex-col  md:text-3xl sm:text-xl bg-[#0a1222] justify-center h-[70vh] movingBorders '>
             <h2 className='text-white m-5'>Login</h2>
             <input
                 className='md:w-[70%] sm:w-[90%] m-5 bg-inherit text-white p-3 rounded-lg hover:bg-black hover:opacity-50 '
