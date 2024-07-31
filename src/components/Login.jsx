@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 
 import { useNavigate } from 'react-router-dom';
@@ -23,6 +23,14 @@ function Login() {
         }
 
     }
+    useEffect(() => {
+        window.addEventListener('keypress', (event) => {
+            console.log(event.key);
+            if(event.key == 'Enter'){
+                handleSubmit();
+            }
+        })
+    }, [])
     const isEnabled = user && password;
     return (
         <div className='w-[90vw] md:w-[60vw] md:ml-[11rem] flex flex-col  md:text-3xl sm:text-xl bg-[#0a1222] justify-center h-[70vh] movingBorders '>
